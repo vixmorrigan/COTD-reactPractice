@@ -43,6 +43,7 @@ class Order extends React.Component {
         <div className="total">
           Total:
           <strong>{formatPrice(total)}</strong>
+          <button onClick={this.props.removeOrder}>Remove </button>
         </div>
       </div>
     );
