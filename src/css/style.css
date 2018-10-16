@@ -12,6 +12,19 @@
   -webkit-transition: 5s;
   transition: 5s;
 }
+.order-exit {
+  background: #d8bfd8;
+  -webkit-transition: 5s;
+  transition: 5s;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+.order-exit.order-exit-active {
+  -webkit-transition: 5s;
+  transition: 5s;
+  -webkit-transform: translateX(120%);
+          transform: translateX(120%);
+}
 @font-face {
   font-family: "haymakerregular";
   src: url("./fonts/haymaker-webfont.eot");
