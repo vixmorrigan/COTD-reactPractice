@@ -4,7 +4,7 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   max-height: 0;
-  padding: 0;
+  padding: 0 !important;
 }
 .order-enter.order-enter-active {
   max-height: 60px;
@@ -22,6 +22,35 @@
   -webkit-transform: translateX(120%);
           transform: translateX(120%);
   padding: 0;
+}
+.count-enter {
+  background: #00f;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+.count-enter.counter-enter-active {
+  background: #008000;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.count-exit {
+  background: #000;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.count-exit.count-exit-active {
+  background: #008000;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
 }
 @font-face {
   font-family: "haymakerregular";
