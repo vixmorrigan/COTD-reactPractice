@@ -6,8 +6,6 @@ import EditFishForm from "./EditFishForm";
 import Login from "./Login";
 import base, { firebaseApp } from "../base";
 
-console.log(firebaseApp);
-
 class Inventory extends React.Component {
   static propTypes = {
     fishes: PropTypes.object,
@@ -15,6 +13,11 @@ class Inventory extends React.Component {
     deleteFish: PropTypes.func,
     addFish: PropTypes.func,
     loadSampleFishes: PropTypes.func
+  };
+
+  state = {
+    uid: null,
+    owner: null
   };
 
   authHandler = async authData => {
@@ -29,7 +32,10 @@ class Inventory extends React.Component {
       });
     }
     //3. Set state of inventory to reflect current user
-
+    this.setState({
+      uid: authData.uid,
+      owner: store.owner || authData.user.uid
+    });
     console.log(authData);
   };
 
@@ -42,8 +48,11 @@ class Inventory extends React.Component {
   };
 
   render() {
-    return <Login authenticate={this.authenticate} />;
-
+    // Check if logged in already
+    if (!this.state.uid) {
+      return <Login authenticate={this.authenticate} />;
+    } else {
+    }
     return (
       <div className="inventory">
         <h2>Inventory</h2>
