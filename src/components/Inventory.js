@@ -26,17 +26,16 @@ class Inventory extends React.Component {
     console.log(store);
     //2. claim it if there is no owner
     if (!store.owner) {
-      //save as own
+      //save store as own
       await base.post(`${this.props.storeId}/owner`, {
         data: authData.user.uid
       });
     }
     //3. Set state of inventory to reflect current user
     this.setState({
-      uid: authData.uid,
+      uid: authData.user.uid,
       owner: store.owner || authData.user.uid
     });
-    console.log(authData);
   };
 
   authenticate = provider => {
@@ -52,6 +51,11 @@ class Inventory extends React.Component {
     if (!this.state.uid) {
       return <Login authenticate={this.authenticate} />;
     } else {
+      return (
+        <div>
+          <p>Sorry - you are not the store owner!</p>
+        </div>
+      );
     }
     return (
       <div className="inventory">
